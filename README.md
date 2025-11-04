@@ -1,4 +1,4 @@
-# Fedex Exchange Backend
+# FedEx Exchange Backend
 
 A production-grade, high-performance trading exchange backend that ingests streamed trade orders via HTTP and WebSocket, performs matching/clearing for a simplified exchange, persists trade history and order book snapshots, and exposes low-latency APIs with comprehensive metrics for real-time analytics.
 
@@ -1096,10 +1096,10 @@ METRICS_PORT=9090
 ## 📞 Support & Documentation
 
 ### Additional Resources
-- **Postman Collection**: `postman_collection.json` - Complete API examples
-- **Design Document**: `DESIGN.md` - Detailed architecture explanation
-- **API Examples**: `API_EXAMPLES.md` - cURL and code samples
-- **Quick Start**: `QUICKSTART.md` - Fast setup guide
+- **Load Test Report**: `LOAD_TEST_REPORT.md` - Detailed performance analysis and scaling recommendations
+- **Design Document**: `DESIGN.md` - Technical architecture and system design  
+- **API Examples**: `API_EXAMPLES.md` - Practical cURL examples and code samples
+- **Postman Collection**: `postman_collection.json` - Complete API testing suite
 
 ### Code Quality & Testing
 
@@ -1120,10 +1120,6 @@ See `.env.example` for all available configuration options.
 - `KAFKA_*`: Kafka broker settings
 - `RATE_LIMIT_*`: Rate limiting configuration
 - `MATCHING_*`: Matching engine parameters
-
-## 📄 License
-
-MIT License - See `LICENSE` file for details.
 
 ## 🤝 Contributing
 
