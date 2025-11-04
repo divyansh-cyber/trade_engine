@@ -1,0 +1,231 @@
+{
+  "info": {
+    "name": "TwoCents Capital Exchange API",
+    "description": "Complete API collection for the exchange backend service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Submit Limit Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idempotency_key\": \"order-123\",\n  \"order_id\": \"order-1\",\n  \"client_id\": \"client-A\",\n  \"instrument\": \"BTC-USD\",\n  \"side\": \"buy\",\n  \"type\": \"limit\",\n  \"price\": 70150.5,\n  \"quantity\": 0.25\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/orders",
+              "host": ["{{base_url}}"],
+              "path": ["orders"]
+            }
+          }
+        },
+        {
+          "name": "Submit Market Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idempotency_key\": \"market-order-123\",\n  \"client_id\": \"client-B\",\n  \"instrument\": \"BTC-USD\",\n  \"side\": \"sell\",\n  \"type\": \"market\",\n  \"quantity\": 0.5\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/orders",
+              "host": ["{{base_url}}"],
+              "path": ["orders"]
+            }
+          }
+        },
+        {
+          "name": "Cancel Order",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/orders/:order_id/cancel?instrument=BTC-USD",
+              "host": ["{{base_url}}"],
+              "path": ["orders", ":order_id", "cancel"],
+              "query": [
+                {
+                  "key": "instrument",
+                  "value": "BTC-USD"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Order",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/orders/:order_id",
+              "host": ["{{base_url}}"],
+              "path": ["orders", ":order_id"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Market Data",
+      "item": [
+        {
+          "name": "Get Order Book",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/market/orderbook?instrument=BTC-USD&levels=20",
+              "host": ["{{base_url}}"],
+              "path": ["market", "orderbook"],
+              "query": [
+                {
+                  "key": "instrument",
+                  "value": "BTC-USD"
+                },
+                {
+                  "key": "levels",
+                  "value": "20"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Recent Trades",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/market/trades?instrument=BTC-USD&limit=50",
+              "host": ["{{base_url}}"],
+              "path": ["market", "trades"],
+              "query": [
+                {
+                  "key": "instrument",
+                  "value": "BTC-USD"
+                },
+                {
+                  "key": "limit",
+                  "value": "50"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Trade Analytics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/market/analytics?instrument=BTC-USD&start_time=2024-01-01T00:00:00Z&end_time=2024-01-01T23:59:59Z&interval=1",
+              "host": ["{{base_url}}"],
+              "path": ["market", "analytics"],
+              "query": [
+                {
+                  "key": "instrument",
+                  "value": "BTC-USD"
+                },
+                {
+                  "key": "start_time",
+                  "value": "2024-01-01T00:00:00Z"
+                },
+                {
+                  "key": "end_time",
+                  "value": "2024-01-01T23:59:59Z"
+                },
+                {
+                  "key": "interval",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Client Positions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/market/positions/:client_id",
+              "host": ["{{base_url}}"],
+              "path": ["market", "positions", ":client_id"]
+            }
+          }
+        },
+        {
+          "name": "Request Order Book Snapshot",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/market/orderbook/snapshot?instrument=BTC-USD",
+              "host": ["{{base_url}}"],
+              "path": ["market", "orderbook", "snapshot"],
+              "query": [
+                {
+                  "key": "instrument",
+                  "value": "BTC-USD"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/healthz",
+              "host": ["{{base_url}}"],
+              "path": ["healthz"]
+            }
+          }
+        },
+        {
+          "name": "Get Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/metrics",
+              "host": ["{{base_url}}"],
+              "path": ["metrics"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000"
+    }
+  ]
+}
+
